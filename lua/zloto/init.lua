@@ -33,9 +33,9 @@ M.load = function(opts)
 end
 
 M.setup = function(opts)
-   opts = vim.tbl_deep_extend("force", default_opts, opts)
-   opts.palette = require("zloto.palette").setup(opts.palette)
-   opts.groups = require("zloto.groups").setup(opts.groups)
+   opts = vim.tbl_deep_extend("force", default_opts, opts or {})
+   opts["palette"] = require("zloto.palette").setup(opts.palette)
+   opts["groups"] = require("zloto.groups").setup(opts.groups)
    M.load(opts)
 end
 
