@@ -1,6 +1,6 @@
 local M = {}
 
-M.default = {
+M.defaults = {
    background = "#0D1117",
    foreground = "#E3E4E5",
    accent = "#DDB279",
@@ -35,7 +35,5 @@ M.default = {
       white = "#FFFFFF",
    },
 }
-
-M.setup = function(opts) return vim.tbl_deep_extend("force", M.default, opts) end
 
 return M

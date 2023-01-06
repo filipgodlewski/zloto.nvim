@@ -1,1 +1,1 @@
-require("zloto").setup()
+require("zloto").load()
