@@ -41,8 +41,8 @@ M.setup = function(colors, opts)
          NormalFloat = {},
          NormalNC = {},
          Folded = {},
-         MatchParen = {},
-         EndOfBuffer = {},
+         MatchParen = { bg = C.bright.black },
+         EndOfBuffer = { fg = C.background },
          NonText = { fg = C.dim.black },
          Whitespace = { fg = C.dim.black },
          Conceal = {},
@@ -87,17 +87,17 @@ M.setup = function(colors, opts)
          Boolean = { fg = C.accent, bold = true },
          Character = {},
          Comment = { fg = C.bright.black, italic = true },
-         Conditional = {},
+         Conditional = { fg = C.normal.cyan },
          Constant = {},
          Debug = {},
          Define = {},
-         Delimiter = {},
+         Delimiter = { fg = C.normal.white },
          Exception = {},
          Float = { fg = C.accent },
          Function = { fg = C.normal.blue },
-         Identifier = {},
+         Identifier = { fg = C.bright.white },
          Include = {},
-         Keyword = {},
+         Keyword = { fg = C.normal.blue },
          Label = {},
          Macro = {},
          Number = { fg = C.accent },
@@ -106,7 +106,7 @@ M.setup = function(colors, opts)
          PreProc = {},
          Question = {},
          Repeat = {},
-         Special = {},
+         Special = { fg = C.normal.red },
          SpecialComment = {},
          SpecialChar = {},
          Statement = {},
@@ -125,30 +125,30 @@ M.setup = function(colors, opts)
       },
 
       diagnostic = {
-         DiagnosticError = {},
-         DiagnosticWarn = {},
-         DiagnosticInfo = {},
-         DiagnosticHint = {},
+         DiagnosticError = { fg = C.bright.red },
+         DiagnosticWarn = { fg = C.bright.yellow },
+         DiagnosticInfo = { fg = C.bright.blue },
+         DiagnosticHint = { fg = C.bright.green },
 
-         DiagnosticVirtualTextError = {},
-         DiagnosticVirtualTextWarn = {},
-         DiagnosticVirtualTextInfo = {},
-         DiagnosticVirtualTextHint = {},
+         DiagnosticVirtualTextError = { fg = C.bright.red, bg = C.dim.red },
+         DiagnosticVirtualTextWarn = { fg = C.bright.yellow, bg = C.dim.yellow },
+         DiagnosticVirtualTextInfo = { fg = C.bright.blue, bg = C.dim.blue },
+         DiagnosticVirtualTextHint = { fg = C.bright.green, bg = C.dim.green },
 
-         DiagnosticUnderlineError = {},
-         DiagnosticUnderlineWarn = {},
-         DiagnosticUnderlineInfo = {},
-         DiagnosticUnderlineHint = {},
+         DiagnosticUnderlineError = { fg = C.bright.red },
+         DiagnosticUnderlineWarn = { fg = C.bright.yellow },
+         DiagnosticUnderlineInfo = { fg = C.bright.blue },
+         DiagnosticUnderlineHint = { fg = C.bright.green },
 
-         DiagnosticFloatingError = {},
-         DiagnosticFloatingWarn = {},
-         DiagnosticFloatingInfo = {},
-         DiagnosticFloatingHint = {},
+         DiagnosticFloatingError = { fg = C.bright.red },
+         DiagnosticFloatingWarn = { fg = C.bright.yellow },
+         DiagnosticFloatingInfo = { fg = C.bright.blue },
+         DiagnosticFloatingHint = { fg = C.bright.green },
 
-         DiagnosticSignError = {},
-         DiagnosticSignWarn = {},
-         DiagnosticSignInfo = {},
-         DiagnosticSignHint = {},
+         DiagnosticSignError = { fg = C.bright.red },
+         DiagnosticSignWarn = { fg = C.bright.yellow },
+         DiagnosticSignInfo = { fg = C.bright.blue },
+         DiagnosticSignHint = { fg = C.bright.green },
       },
 
       lsp = {
@@ -169,47 +169,50 @@ M.setup = function(colors, opts)
       },
 
       treesitter = {
-         ["@text.literal"] = { fg = C.bright.black, italic = true }, -- Comment
-         ["@text.reference"] = {}, -- Identifier
+         ["@error"] = { fg = C.bright.red },
+         ["@text.literal"] = { fg = C.bright.black, italic = true },
+         ["@text.reference"] = { fg = C.normal.blue },
          ["@text.title"] = {}, -- Title
-         ["@text.uri"] = { fg = C.bright.blue, underline = true }, -- Underlined
-         ["@text.underline"] = { fg = C.bright.blue, underline = true }, -- Underlined
-         ["@text.todo"] = {}, -- Todo
+         ["@text.uri"] = { fg = C.bright.blue, underline = true },
+         ["@text.underline"] = { fg = C.bright.blue, underline = true },
+         ["@text.todo"] = { fg = C.bright.magenta },
 
-         ["@comment"] = { fg = C.bright.black, italic = true }, -- Comment
-         ["@punctuation"] = {}, -- Delimiter
+         ["@comment"] = { fg = C.bright.black, italic = true },
+         ["@punctuation"] = { fg = C.normal.white },
+         ["@punctuation.bracket"] = { fg = C.normal.magenta },
 
-         ["@constant"] = {}, -- Constant
-         ["@constant.builtin"] = {}, -- Special
+         ["@constant"] = { fg = C.normal.green },
+         ["@constant.builtin"] = { fg = C.accent },
          ["@constant.macro"] = {}, -- Define
          ["@define"] = {}, -- Define
          ["@macro"] = {}, -- Macro
-         ["@string"] = { fg = C.dim.white }, -- String
+         ["@string"] = { fg = C.dim.white },
          ["@string.escape"] = {}, -- SpecialChar
          ["@string.special"] = {}, -- SpecialChar
          ["@character"] = {}, -- Character
          ["@character.special"] = {}, -- SpecialChar
-         ["@number"] = { fg = C.accent }, -- Number
-         ["@boolean"] = { fg = C.accent, bold = true }, -- Boolean
-         ["@float"] = { fg = C.accent }, -- Float
+         ["@number"] = { fg = C.accent },
+         ["@boolean"] = { fg = C.accent, bold = true },
+         ["@float"] = { fg = C.accent },
 
-         ["@function"] = { fg = C.normal.blue }, -- Function
-         ["@function.builtin"] = {}, -- Special
+         ["@function"] = { fg = C.normal.blue },
+         ["@function.builtin"] = { fg = C.normal.red },
          ["@function.macro"] = {}, -- Macro
-         ["@parameter"] = {}, -- Identifier
+         ["@parameter"] = { fg = C.bright.white },
          ["@method"] = {}, -- Function
-         ["@field"] = {}, -- Identifier
+         ["@field"] = { fg = C.normal.blue },
          ["@property"] = {}, -- Identifier
-         ["@constructor"] = {}, -- Special
+         ["@constructor"] = { fg = C.normal.magenta },
 
-         ["@conditional"] = {}, -- Conditional
+         ["@conditional"] = { fg = C.normal.cyan },
          ["@repeat"] = {}, -- Repeat
          ["@label"] = {}, -- Label
          ["@operator"] = {}, -- Operator
-         ["@keyword"] = {}, -- Keyword
+         ["@keyword"] = { fg = C.normal.blue },
+         ["@keyword.return"] = { fg = C.normal.cyan, bold = true, italic = true },
          ["@exception"] = {}, -- Exception
 
-         ["@variable"] = {}, -- Identifier
+         ["@variable"] = { fg = C.normal.blue },
          ["@type"] = {}, -- Type
          ["@type.definition"] = {}, -- Typedef
          ["@storageclass"] = {}, -- StorageClass
