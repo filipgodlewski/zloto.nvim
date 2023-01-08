@@ -2,6 +2,8 @@ local M = {}
 
 M.defaults = {
    background = "#0D1117",
+   background2 = "#0F131A",
+   background3 = "#10141C",
    foreground = "#E3E4E5",
    accent = "#DDB279",
    dim = {
@@ -15,7 +17,7 @@ M.defaults = {
       white = "#BCB6AF",
    },
    normal = {
-      black = "#0D1117",
+      black = "#131922",
       red = "#525357",
       green = "#686A6E",
       yellow = "#8A8D91",
